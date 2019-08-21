@@ -28,14 +28,22 @@ class NuclearFluxClass {
         }
     }
 
-    register(key,context) {
-        if(!key) {
+    register(contextKey,context) {
+        if(!contextKey) {
             console.warn("NuclearFlux: Context key is undefined")
         } else if(!context) {
             console.warn("NuclearFlux: Context is undefined")
         } else {
-            this.contextManager.set(key,context)
+            this.contextManager.set(contextKey,context)
         }
+    }
+    
+    getContext(contextKey) {
+      if(this.contextManager.has(contextKey)) {
+            return this.contextManager.get(contextKey)
+        } else {
+            console.warn("NuclearFlux: Context key is undefined")
+        }  
     }
 }
 
